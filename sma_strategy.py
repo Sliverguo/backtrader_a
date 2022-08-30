@@ -17,11 +17,14 @@ class smastrategy(bt.Strategy):
         self.sma = bt.indicators.MovingAverageSimple(self.data0, period=20)
 
     def next(self):
-        # print("next")
+        # print(type(self.position))
+        print(self.position)
         if not self.position:
+            print('not positon')
             if self.dataclose[0] > self.sma[0]:
                 self.buy()
         else:
+            print('positon is ok')
             if self.dataclose[0] < self.sma[0]:
                 self.close()
 
